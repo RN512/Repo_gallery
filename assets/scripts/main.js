@@ -1,25 +1,41 @@
-
 document.addEventListener("DOMContentLoaded", () => {
 
+  // ==================================================
+  // トグルボタン
+  // ==================================================
   const toggleButton = document.querySelector(".toggle-button");
-  const menu = document.querySelector(".global-nav");
+  const menu         = document.querySelector(".global-nav");
+  const lines        = toggleButton.querySelectorAll("span");
 
-  const lines = toggleButton.querySelectorAll("span");
+  //
+  // ボタンのクリック処理
+  //
+  toggleButton.addEventListener("click", () => {
+    if (menuAnimation.reversed()) {
+      // メニューを開く
+      toggleButton.classList.add("is-active");
+      menuAnimation.play();
+    } else {
+      // メニューを閉じる
+      toggleButton.classList.remove("is-active");
+      menuAnimation.reverse();
+    }
+  });
 
+  //
+  // メニュー内リンクのクリック処理
+  //
+  menu.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      toggleButton.classList.remove("is-active");
+      menuAnimation.reverse();
+    });
+  });
 
-  // =========================
-  // GSAP 初期化
-  // =========================
-
-  // ScrollTrigger プラグインを登録
-  gsap.registerPlugin(ScrollTrigger);
-
-
-  // =========================
+  //
   // 初期状態
-  // =========================
-
-  // 3 本線の初期位置
+  //
+  // トグルボタン
   gsap.set([lines[0], lines[1], lines[2]], {
     rotation: 0,
     x: 0,
@@ -31,9 +47,9 @@ document.addEventListener("DOMContentLoaded", () => {
     yPercent: -100,
   });
 
-  // =========================
+  //
   // アニメーションの構築
-  // =========================
+  //
 
   const menuAnimation = gsap.timeline({
     paused:   true,
@@ -70,30 +86,57 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 0);
 
 
-  // =========================
-  // ボタンのクリック処理
-  // =========================
+  // ==================================================
+  // メインビジュアル : スクロール連動で画像を拡大・縮小
+  // ==================================================
 
-  toggleButton.addEventListener("click", () => {
-    if (menuAnimation.reversed()) {
-      // メニューを開く
-      toggleButton.classList.add("is-active");
-      menuAnimation.play();
-    } else {
-      // メニューを閉じる
-      toggleButton.classList.remove("is-active");
-      menuAnimation.reverse();
-    }
+
+  //
+  // ScrollTrigger プラグインを登録
+  //
+  gsap.registerPlugin(ScrollTrigger);
+
+  // DOM を取得する
+  const images = gsap.utils.toArray("#top img");
+  const [leftImage, centerImage, rightImage] = images;
+
+  // 真ん中の画像の中心 = 画面中央
+  gsap.set(centerImage, {
+    xPercent: -50,
   });
 
-  // =========================
-  // メニュー内リンクのクリック処理
-  // =========================
-
-  menu.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => {
-      toggleButton.classList.remove("is-active");
-      menuAnimation.reverse();
-    });
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: "#top",
+      start: "top top",
+      end: "+=800",
+      scrub: true,
+      pin: false,
+      invalidateOnRefresh: true,
+    },
   });
+
+  //
+  // 3 枚の画像幅を広げる
+  //
+  tl.to(images, {
+    width: "100%",
+    duration: 1,
+    ease: "none",
+  }, 0);
+
+  // 左の画像を左方向へ移動
+  tl.to(leftImage, {
+    xPercent: -100,
+    duration: 1,
+    ease: "none",
+  }, 0);
+
+  // 右の画像を右方向へ移動
+  tl.to(rightImage, {
+    xPercent: 100,
+    duration: 1,
+    ease: "none",
+  }, 0);
+
 });

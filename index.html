@@ -19,18 +19,22 @@
     <script src="./assets/scripts/gsap-public/minified/gsap.min.js" defer></script>
     <!-- スクロール連動用プラグイン -->
     <script src="./assets/scripts/gsap-public/minified/ScrollTrigger.min.js" defer></script>
-    <script src="./assets/scripts/main.js" defer></script>
+    <!-- 各アニメーション -->
+    <script src="./assets/scripts/menu.js" defer></script>
+    <script src="./assets/scripts/hero.js" defer></script>
+    <script src="./assets/scripts/information.js" defer></script>
+    <script src="./assets/scripts/access.js" defer></script>
   </head>
 
   <body>
 
     <header>
 
-      <h1>
+      <div class="logo">
         <a href="#">
           <img src="./assets/images/logo.svg" alt="FA EXHIBITION">
         </a>
-      </h1>
+      </div>
 
       <!-- 3 本線のトグルボタン -->
       <button class="toggle-button" type="button">
@@ -80,13 +84,13 @@
 
         <h2>INFORMATION</h2>
 
-        <p>2021 JUL 1(THU)-3(SAT)</p>
-        <p>DAY1<time>10am-6pm</time>OTHER<time>10am-5:30pm</time></p>
+        <p class="event-date">2021 JUL 1(THU)-3(SAT)</p>
+        <p class="event-time">DAY1<time>10am-6pm</time>OTHER<time>10am-5:30pm</time></p>
 
-        <p>at PARK SIDE HALL</p>
+        <p class="event-place">at PARK SIDE HALL</p>
 
-        <p>2021年7月1日(木)-3日(土)</p>
-        <p>Day1<time>10時〜18時</time>その他<time>10時〜17時30分</time></p>
+        <p class="event-date-ja">2021年7月1日(木) &ndash; 3日(土)</p>
+        <p class="event-time-ja">Day1<time>10時〜18時</time>その他<time>10時〜17時30分</time></p>
 
       </section>
 
@@ -103,23 +107,30 @@
           </li>
         </ul>
 
-        <img src="./assets/images/gallery/flower_01.jpg" width="800" height="1100" alt="かごのそばに置かれたオレンジ色の花">
-        <img src="./assets/images/gallery/flower_02.jpg" width="800" height="530"  alt="壁際に並べられた赤や白のバラ">
-        <img src="./assets/images/gallery/flower_03.jpg" width="800" height="800"  alt="ピンクのバラと小花のアレンジメント">
-        <img src="./assets/images/gallery/flower_04.jpg" width="800" height="1200" alt="ピンクや白のバラと青や紫の花のアレンジメント">
-        <img src="./assets/images/gallery/flower_05.jpg" width="800" height="1000" alt="黄色やオレンジ、ピンクのバラが並ぶ">
-        <img src="./assets/images/gallery/flower_06.jpg" width="800" height="530"  alt="個性的な花のアレンジメント">
+        <div class="gallery-images">
+          <img src="./assets/images/gallery/flower_01.jpg" width="800" height="1100" alt="かごのそばに置かれたオレンジ色の花">
+          <img src="./assets/images/gallery/flower_02.jpg" width="800" height="530"  alt="壁際に並べられた赤や白のバラ">
+          <img src="./assets/images/gallery/flower_03.jpg" width="800" height="800"  alt="ピンクのバラと小花のアレンジメント">
+          <img src="./assets/images/gallery/flower_04.jpg" width="800" height="1200" alt="ピンクや白のバラと青や紫の花のアレンジメント">
+          <img src="./assets/images/gallery/flower_05.jpg" width="800" height="1000" alt="黄色やオレンジ、ピンクのバラが並ぶ">
+          <img src="./assets/images/gallery/flower_06.jpg" width="800" height="530"  alt="個性的な花のアレンジメント">
+        </div>
 
       </section>
 
       <section id="access">
+
+        <div class="background_img"></div>
 
         <h2>ACCESS</h2>
 
         <p>PARK SIDE HALL</p>
 
         <address>
-          <p>〒152-0035 東京都目黒区自由が丘1-1-1 PARK SIDE HALL PARK SIDE HALL, 1-1-1 Jiyugaoka, Meguro-ku, Tokyo</p>
+          <p>
+            <span>〒152-0035 東京都目黒区自由が丘1-1-1 PARK SIDE HALL</span>
+            <span>PARK SIDE HALL, 1-1-1 Jiyugaoka, Meguro-ku, Tokyo</span>
+          </p>
 
           <ul>
             <li>Tel: 03-1111-1111</li>
@@ -127,9 +138,7 @@
           </ul>
         </address>
 
-        <p><a href="#">GOOGLE MAP</a></p>
-
-        <img src="./assets/images/bottom.jpg" width="1920" height="1440" alt="FA EXHIBITION の印象を伝えるイメージ">
+        <p class="google-map_link"><a href="#">GOOGLE MAP</a></p>
 
       </section>
 
@@ -153,30 +162,38 @@
 
     <footer class="footer">
 
-      <h3>FA EXHIBITION</h3>
+      <div class="footer-info">
 
-      <p>〒152-0035 東京都目黒区自由が丘1-1-1 PARK SIDE HALL</p>
+        <h3>FA EXHIBITION</h3>
 
-      <ul>
-        <li>Tel: 03-1111-1111</li>
-        <li>E-mail: info@xxxxxxx.jp</li>
-      </ul>
+        <p>〒152-0035 東京都目黒区自由が丘1-1-1 PARK SIDE HALL</p>
 
-      <ul>
-        <li>
-          <a href="#">Twitter</a>
-        </li>
-        <li>
-          <a href="#">Facebook</a>
-        </li>
-        <li>
-          <a href="#">Instagram</a>
-        </li>
-      </ul>
+        <ul class="contact-links">
+          <li>Tel: 03-1111-1111</li>
+          <li>E-mail: info@xxxxxxx.jp</li>
+        </ul>
 
-      <p><a href="#">PRIVACY POLICY</a></p>
+        <ul class="sns-links">
+          <li>
+            <a href="#">Twitter</a>
+          </li>
+          <li>
+            <a href="#">Facebook</a>
+          </li>
+          <li>
+            <a href="#">Instagram</a>
+          </li>
+        </ul>
 
-      <small>&copy;FA EXHIBITION</small>
+      </div>
+
+      <div class="footer-legal">
+
+        <p><a href="#">PRIVACY POLICY</a></p>
+
+        <small>&copy; FA EXHIBITION</small>
+
+      </div>
 
     </footer>
 

@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   const toggleButton = document.querySelector(".toggle-button");
-  const menu = document.querySelector(".global-nav");
+  const menu         = document.querySelector(".global-nav");
 
   if (!toggleButton || !menu) return;
 

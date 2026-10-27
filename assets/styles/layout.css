@@ -1,9 +1,4 @@
 /* =========================
-  root スタイル
-========================= */
-
-
-/* =========================
   リセット スタイル
 ========================= */
 *,
@@ -49,12 +44,13 @@ address {
 ========================= */
 html {
   font-size: 100%;
-  font-weight: 300;
 }
 
 body {
-  font-family: 'Source Sans Pro', sans-serif;
   color: rgba(255, 255, 255, 1.0);
+  font-weight: 300;
+
+  font-family: 'Source Sans Pro', sans-serif;
 
   background-color: rgba(0, 0, 0, 1.0);
 }
@@ -131,11 +127,12 @@ header {
 #top {
   position: relative;
   width: 100%; height: 100dvh;
+
   overflow: hidden;
 }
   #top img {
     position: absolute; top: 0;
-    width: calc(100% / 3); height: 100%;
+    width: calc(100% / 3); height: 100dvh;
     object-fit: cover;
   }
     #top img:nth-child(1) {
@@ -164,7 +161,7 @@ h1 {
   font-weight: 300;
   letter-spacing: 3px;
 
-  margin: 100px 0;
+  margin-bottom: 100px;
 }
   h1 span {
     display: block;
@@ -172,10 +169,10 @@ h1 {
 
 
 /* ----- ----- -----
-  インフォメーション
-  #information
+  インフォメーション id : information
   ----- ----- ----- */
 #information {
+  margin-top:80px;
   margin-bottom: 140px;
 }
 
@@ -274,15 +271,20 @@ h1 {
 
         padding: 15px 0;
 
-        border: solid 1px rgba(255, 255, 255, 1.0);
+        border: solid 1px rgba(222, 222, 222, 1.0);
       }
       #gallery li:first-child {
         border-right: none;
       }
         #gallery li a {
-          color: rgba(255, 255, 255, 1.0);
+          color: rgba(222, 222, 222, 1.0);
           font-size: 0.875rem;
           letter-spacing: 0.1em;
+
+          transition: 0.3s;
+        }
+        #gallery li a:hover {
+          opacity: 0.7;
         }
 
 
@@ -293,6 +295,8 @@ h1 {
   position: relative;
   isolation: isolate;
   width: 100%; height: 100dvh;
+
+  margin-bottom: -110px;
 }
 
   #access .background_img {
@@ -321,7 +325,7 @@ h1 {
   }
 
   #access address {
-    margin-bottom: 20px;
+    margin-bottom: 30px;
   }
     #access p {
       margin-bottom: 20px;
@@ -455,3 +459,129 @@ footer {
     footer .footer-legal small {
       font-size: 0.75rem;
     }
+
+
+
+@media screen and (max-width: 900px) {
+
+  /* ----- ----- -----
+    インフォメーション id : information
+    ----- ----- ----- */
+
+  #information {
+    margin-bottom: 80px;
+  }
+
+    #information h1 {
+      font-size: 3rem;
+      margin: 50px 0;
+    }
+
+   #information h2 {
+      font-size: 2rem;
+    }
+
+    .event-date {
+      font-size: 1rem;
+    }
+    .event-time {
+      font-size: 1.rem;
+    }
+
+    .event-place {
+      font-size: 2rem;
+    }
+
+    .event-date-ja,
+    .event-time-ja {
+      font-size: 1rem;
+    }
+
+  /* ----- ----- -----
+    ギャラリー / id : gallery
+    ----- ----- ----- */
+  #gallery {
+    max-width: 800px;
+
+    margin: 0 auto;
+    margin-bottom: 480px;
+    padding: 0 30px;
+  }
+
+    #gallery h2 {
+      font-size: 2rem;
+    }
+
+    /* ----- 複数画像 ----- */
+    .gallery-images {
+      display: block;
+    }
+      .gallery-images img {
+        width: 100%;
+        margin-bottom: 30px;
+      }
+      .gallery-images img:nth-child(even) {
+        align-self: auto; /* 偶数番目だけ右寄せ */ */
+      }
+      /* ----- 枠付きリンク ----- */
+      #gallery ul {
+        opacity: 0;
+      }
+
+
+  /* ----- ----- -----
+    アクセス / id : access
+    ----- ----- ----- */
+  #access {
+    height: auto;
+    margin-bottom: 280px;
+  }
+
+    #access h2 {
+      font-size: 2rem;
+    }
+
+      #access p {
+        margin-bottom: 20px;
+      }
+
+  /* ----- ----- -----
+    コンタクト / id : access
+    ----- ----- ----- */
+  #contact {
+  }
+
+  #contact h2 {
+    font-size: 2rem;
+  }
+
+  /* ----- リスト ----- */
+  #contact ul {
+  }
+    #contact li {
+    }
+      #contact li a { /* 枠付きリンク */
+        width: 80%;
+      }
+        #contact li a::before { /* 右側にはみ出す横線 */
+          content: none;
+        }
+        #contact li a::after {/* 横線の右端に付く矢印 */
+          content: none;
+        }
+
+
+  /* =========================
+    <footer></footer>
+  ========================= */
+  footer {
+    display: block;
+
+    padding: 60px 30px;
+  }
+    .footer-info {
+      margin-bottom: 30px;
+    }
+
+
+}

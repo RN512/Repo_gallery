@@ -14,22 +14,22 @@ document.addEventListener("DOMContentLoaded", () => {
   //
   gsap.set(accessBg, { opacity: 0 });
 
-/*
-  toggleActions -->> イベントトリガー
-  toggleActions: "① ② ③ ④"
-  ① onEnter     下方向にスクロールして、トリガー範囲に入ったら
-  ② onLeave     下方向にスクロールして、トリガー範囲から出たら
-  ③ onEnterBack 上方向にスクロールして、トリガー範囲に入ったら
-  ④ onLeaveBack 上方向にスクロールして、トリガー範囲から出たら
-*/
+  /*
+    toggleActions について
+    toggleActions: "① ② ③ ④"
+    ① onEnter     下方向にスクロールして、トリガー範囲に入ったら
+    ② onLeave     下方向にスクロールして、トリガー範囲から出たら
+    ③ onEnterBack 上方向にスクロールして、トリガー範囲に入ったら
+    ④ onLeaveBack 上方向にスクロールして、トリガー範囲から出たら
+  */
   gsap.to(accessBg, {
     opacity:  1.0,
     duration: 0.4,
     scrollTrigger: {
-      trigger: "#access",
-      start: "top 80%",
-      endTrigger: "#contact",
-      end: "top 80%",
+      trigger:       "#access",
+      start:         "top 100%",
+      endTrigger:    "#contact",
+      end:           "top bottom",
       toggleActions: "play reverse play reverse"
     }
   });

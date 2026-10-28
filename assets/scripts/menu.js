@@ -56,10 +56,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // ボタンのクリック
   toggleButton.addEventListener("click", () => {
     if (menuAnimation.reversed()) {
-      toggleButton.classList.add("is-active");
       menuAnimation.play();
     } else {
-      toggleButton.classList.remove("is-active");
       menuAnimation.reverse();
     }
   });
